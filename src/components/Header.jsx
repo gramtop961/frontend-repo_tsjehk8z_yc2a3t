@@ -1,7 +1,7 @@
 import React from 'react';
-import { FileText, Sparkles, Download, Eraser } from 'lucide-react';
+import { FileText, Sparkles, Download, Eraser, LayoutGrid } from 'lucide-react';
 
-export default function Header({ onGenerateSummary, onDownload, onClear }) {
+export default function Header({ onGenerateSummary, onDownload, onClear, onNavigate, active }) {
   return (
     <header className="sticky top-0 z-20 backdrop-blur supports-[backdrop-filter]:bg-white/60 bg-white/80 border-b">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -14,6 +14,11 @@ export default function Header({ onGenerateSummary, onDownload, onClear }) {
             <p className="text-sm text-gray-500">Craft a polished resume in minutes</p>
           </div>
         </div>
+        <nav className="flex items-center gap-1">
+          <button onClick={() => onNavigate('home')} className={`px-3 py-1.5 rounded-md text-sm ${active==='home' ? 'bg-gray-900 text-white' : 'hover:bg-gray-100'}`}>Home</button>
+          <button onClick={() => onNavigate('builder')} className={`px-3 py-1.5 rounded-md text-sm ${active==='builder' ? 'bg-gray-900 text-white' : 'hover:bg-gray-100'}`}>Builder</button>
+          <button onClick={() => onNavigate('templates')} className={`px-3 py-1.5 rounded-md text-sm ${active==='templates' ? 'bg-gray-900 text-white' : 'hover:bg-gray-100'}`}><LayoutGrid size={16} className="inline mr-1"/>Templates</button>
+        </nav>
         <div className="flex items-center gap-2">
           <button
             type="button"
